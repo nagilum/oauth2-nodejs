@@ -1,0 +1,25 @@
+{
+  "name": "oauth2-nodejs",
+  "version": "0.0.1",
+  "description": "A simple nodejs OAuth2 auth-code wrapper library.",
+  "author": "Stian Hanger <pdnagilum@gmail.com>",
+  "homepage": "https://github.com/nagilum/oauth2-nodejs",
+  "url": "https://github.com/nagilum/oauth2-nodejs",
+  "keywords": [
+    "oauth2"
+  ],
+  "main": "./index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nagilum/oauth2-nodejs,git"
+  },
+  "dependencies": {
+    "https": "*",
+    "querystring": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
