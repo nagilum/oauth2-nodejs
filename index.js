@@ -42,6 +42,9 @@ exports.CreateRedirect = function (provider, redirectUri, locale) {
   if (provider.scope)
     parameters.scope = provider.scope;
 
+  if (provider.state)
+    parameters.state = provider.state;
+
   return provider.authUri + '?' + buildQueryString(parameters);
 }
 
@@ -69,6 +72,9 @@ exports.AuthenticateByCode = function (provider, redirectUri, code, callback) {
   if (provider.scope)
     parameters.scope = provider.scope;
 
+  if (provider.state)
+    parameters.state = provider.state;
+
   var reply = request(
     provider.accessTokenUri,
     'POST',
@@ -94,6 +100,12 @@ exports.AuthenticateByToken = function (provider, refreshToken, callback) {
     'refresh_token': refreshToken,
     'grant_type': 'refresh_token'
   };
+
+  if (provider.scope)
+    parameters.scope = provider.scope;
+
+  if (provider.state)
+    parameters.state = provider.state;
 
   var reply = request(
     provider.accessTokenUri,
@@ -167,6 +179,8 @@ function interpretReply(reply) {
 
   if (reply['access_token']) response.accessToken = reply['access_token'];
   if (reply['refresh_token']) response.refreshToken = reply['refresh_token'];
+  if (reply['state']) response.refreshToken = reply['state'];
+  if (reply['expires']) response.expires = reply['expires'];
   if (reply['expires_in']) response.expires = reply['expires_in'];
 
   return response;
